@@ -3,11 +3,11 @@
     <head>
         <meta charset="utf-8">
         <title>Test</title>
-        <link rel="stylesheet" href="/styles/resets.css">
+        <!-- <link rel="stylesheet" href="/styles/resets.css">
         <link rel="stylesheet" href="/styles/base.css">
         <link rel="stylesheet" href="/styles/header.css">
         <link rel="stylesheet" href="/styles/form.css">
-        <link rel="stylesheet" href="/styles/footer.css">
+        <link rel="stylesheet" href="/styles/footer.css"> -->
     </head>
 
     <body>
@@ -23,7 +23,7 @@
 
         <main>
             <section>
-                <form class="" onsubmit="return Cliend.handleSubmit(event)">
+                <form class="" onsubmit="return Client.handleSubmit(event)">
                     <input type="text" id="url" placeholder="http://" />
                     <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
                 </form>
@@ -31,7 +31,13 @@
 
             <section>
                 <strong>Form Results:</strong>
-                <div id="results"></div>
+                <div id="results">
+                    <p class="model"></p>
+                    <p class="score"></p>
+                    <p class="subj"></p>
+                    <p class="confidence"></p>
+                    <p class="irony"></p>
+                </div>
             </section>
         </main>
 

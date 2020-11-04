@@ -9,11 +9,12 @@ const fetch = require('node-fetch');
 // set base url
 const baseUrl = "https://api.meaningcloud.com/sentiment-2.1?key="
 const bodyParser = require("body-parser");
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.text());
+// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+// app.use(bodyParser.text());
 
 const cors = require("cors");
-app.use(cors());
+// app.use(cors());
 
 app.use(express.static('dist'))
 
@@ -27,13 +28,15 @@ app.get('/', function (req, res) {
     // res.sendFile(path.resolve('src/client/views/index.html'))
 })
 // add post request to recieve url and fetch data from third party api
-app.post('/post',async function (req,res){
-    // let response = await fetch(`${baseUrl}${textApi.application_key}&lang=eng&url=${req.body}`);
-    let response = await fetch('https://api.meaningcloud.com/sentiment-2.1?key=0c6bca9588a43537df8c95e02d5b4338&lang=auto&url=https://medium.com/@pluzoo1/17-cute-short-love-stories-that-will-make-you-smile-33de2a66e387')
+app.post('/post',async (req,res)=>{
+    console.log(req.body)
+    const response = await fetch(`${baseUrl}${textApi.application_key}&lang=auto&url=${req.body.key}`)
+    // const response = await fetch(`${baseUrl}${textApi.application_key}&lang=auto&url=https://medium.com/@pluzoo1/17-cute-short-love-stories-that-will-make-you-smile-33de2a66e387`)
+    
     try{
         let apiData = await response.json();
         console.log("info has been sent to client")
-        console.log(apiData)
+        // console.log(apiData)
         res.send(apiData);
     }
     catch(err){
