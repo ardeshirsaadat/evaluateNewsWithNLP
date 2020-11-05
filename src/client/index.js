@@ -1,4 +1,4 @@
-import { checkForName } from './js/nameChecker'
+// import { checkForName } from './js/nameChecker'
 import { handleSubmit,geturl,conf_score } from './js/formHandler'
 import {checkUrl} from './js/checkUrl'
 import './styles/resets.scss'
