@@ -26,9 +26,8 @@ function handleSubmit(event) {
 
         console.log("::: Form Submitted :::")
         // post url to server
-        fetch('http://localhost:8080/post',{
+        fetch('http://localhost:8081/post',{
             method: "POST",
-            // cache: "no-cache",
             credentials: "same-origin",
             headers: {
                 "Content-Type": "application/json",
