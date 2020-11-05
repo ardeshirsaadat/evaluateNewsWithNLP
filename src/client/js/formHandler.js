@@ -1,8 +1,19 @@
 import { checkUrl } from "./checkUrl"
+// get url
 let geturl = function(){
     let url = document.getElementById('url').value
     return url
 }
+// confidece score analysis
+let conf_score = function(score){
+    if (score >=50){
+        return "SURE"
+    }
+    else{
+        return "NOT SURE"
+    } 
+}
+
 function handleSubmit(event) {
     event.preventDefault()
 
@@ -28,11 +39,11 @@ function handleSubmit(event) {
         .then(res => res.json())
         .then(function(res) {
             console.log(res)
-            
+            console.log(conf_score(res.confidence))
             
             document.querySelector('.score').innerText = `Polarity:${res.score_tag}`;
             document.querySelector('.subj').innerText = `Subjectivity:${res.subjectivity}`;
-            document.querySelector('.confidence').innerText = `Confidence Level:${res.confidence}`;
+            document.querySelector('.confidence').innerText = `Confidence Level:${conf_score(res.confidence)}`;
             document.querySelector('.irony').innerText = `Tone:${res.irony}`;
 
         })
@@ -42,4 +53,4 @@ else{
 }
 }
 
-export { handleSubmit,geturl }
+export { handleSubmit,geturl,conf_score }
